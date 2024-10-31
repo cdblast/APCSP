@@ -15,27 +15,43 @@ import turtle as trtl
 import random as rand
 
 #-----game configuration----
-'''
-  maybe create petal_timesclicked to help w/ even/odd decider
-'''
-#-----initialize turtle-----
-rands = rand.Random()
-
-turtl = trtl.Turtle()
-
 wn = trtl.Screen()
 wn.bgcolor("white smoke")
 
+#sprites
+flowerhead = "flowerhead.gif"
+petal = "petalpart.gif"
+wn.addshape(flowerhead) # Make the screen aware of the new file
+wn.addshape(petal)
+
+petal_timesclicked = 0
+crush = " "
+
+Petals = []
+
+petalamount = rand.randint(5,15)
+
+
+#-----initialize turtle-----
+rands = rand.Random()
+turtl = trtl.Turtle()
+
+flowerhead = trtl.Turtle(shape=flowerhead)
+flowerhead.penup()
+
 #-----game functions--------
-'''
-def make_petals():
-  sprites loaded in
-  maybe do something like spawn in, rotate(divided by random petal amount decided) and go forward if spawning at origin fucks me in the ass lol.
 
 def startgame():
-  user input "Who's your crush?"
-  make flower() (this is gonna be just the flower head lol.)
-  make petals() (function should have random generated and the petals should be either clicked or spacebar to pop off.)
+  crush = input("Who's your crush?")
+  #make flower() (this is gonna be just the flower head lol.)
+  #make petals() (function should have random generated and the petals should be either clicked or spacebar to pop off.)
+
+
+#def make_petals():
+  
+
+
+'''
 
 def petalclicked():
   text on screen switch from "they love me, they love me not" (modulus operator my behated lol)
@@ -46,4 +62,6 @@ def IM GONNA KILL MYSELF IM GONNA KILL MYSELF IM GONNA KILL MYSEL
 #-----events----------------
 
 #startgame()
+#wn.onkeypress(make_petals,"f")
+wn.listen
 wn.mainloop()

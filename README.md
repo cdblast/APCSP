@@ -4,7 +4,7 @@
  assignments due:
  1.2.4
  1.2.5
-    ^ concept: thinking of a "they love me, they love me not" pulling petals game. small, easy. make the petal amount random, make the art cute, make the text chill lol.
- 2.1.1
- 2.1.3
+    ^ concept: reskin a python game you already did. Jesus fucking christ dude its not that hard
+ 2.1.4
+
  PLEASE do codehs til 50%

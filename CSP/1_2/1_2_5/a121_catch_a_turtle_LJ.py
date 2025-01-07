@@ -12,16 +12,19 @@ player_name = input ("Please enter your name:")
 leader_names_list = []
 leader_scores_list = []
 
-colors = ["black", "teal", "pink", "orange", "purple", "red"]
+#colors = ["black", "teal", "pink", "orange", "purple", "red"]
+colors = ["turtl_realshape", "turtl_shape", "turtl_lightshape"]
 font_setup = ("Arial", 20, "normal")
 sizes = [0.5, 1, 1.5, 2, 2.5, 3]
 
 trtl.addshape("milkbone.gif")
 trtl.addshape("milkbonelight.gif")
+trtl.addshape("realbone.gif")
 
 turtl_shapesize = 2
 turtl_shape = "milkbone.gif"
-turtle_lightshape = "milkbonelight.gif"
+turtl_lightshape = "milkbonelight.gif"
+turtl_realshape = "realbone.gif"
 turtl_color = "midnightblue"
 
 timer = 5
@@ -34,7 +37,7 @@ score = 0
 rands = rand.Random()
 
 turtl = trtl.Turtle()
-turtl.shape(turtl_shape)
+turtl.shape(turtl_realshape)
 turtl.shapesize(turtl_shapesize)
 turtl.fillcolor(turtl_color)
 
@@ -43,7 +46,8 @@ counter = trtl.Turtle()
 # counter.showturtle()
 
 wn = trtl.Screen()
-wn.bgcolor("white smoke")
+#wn.bgcolor("white smoke")
+wn.bgpic('background.gif')
 #-----game functions--------
 
 def turtl_clicked(x,y):
@@ -94,6 +98,7 @@ def countdown():
    if timer <= 0:
       counter.write("Time's Up", font=font_setup)
       timer_up = True
+      wn.bgpic('nopic')
       manage_leaderboard()
    else:
       counter.write("Timer: " +str(timer), font=font_setup)
@@ -102,9 +107,14 @@ def countdown():
 
 #addcolor function
 def addcolor():
-   turtl.shape(turtle_lightshape)
+   turtl.shape(turtl_lightshape)
    turtl.stamp()
-   turtl.shape(turtl_shape)
+   turtl.shape(turtl_realshape)
+
+def leave_a_mark():
+   turtl.shape(rand.choice(colors[0:]))
+   turtl.stamp()
+   turtl.shape(colors[0]) #difficulty increased by commenting this out!
 
 def resize():
    turtl.shapesize(rand.choice(sizes[0:]))
@@ -135,12 +145,6 @@ def manage_leaderboard():
 
   else:
     lb.draw_leaderboard(False, leader_names_list, leader_scores_list, turtl, score)
-
-def leave_a_mark():
-   turtl.shape(milkbonelight)
-   turtl.stamp()
-   turtl.fillcolor(colors[0]) #difficulty increased by commenting this out!
-
 
 #-----events----------------
 start_game()

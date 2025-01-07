@@ -1,12 +1,11 @@
 # APCSP
- holding all of my AP CSP homework yippee<br>
+ holding all of my AP CSP homework yippee
 
- assignments due:<br>
- 1.2.4<br>
- 1.2.5<br>
-    ^ concept: reskin a python game you already did. Jesus fucking christ dude its not that hard<br>
- 2.1.4<br>
- 2.1.6<br>
- 2.2.1<br>
+<br>assignments due:
+<br>1.2.4
+<br>1.2.5
+<br>    ^ concept: reskin a python game you already did. Jesus fucking christ dude its not that hard
+<s><br>2.1.4</s>
+<s><br>2.2.1</s>
 
- PLEASE do codehs til 70%
+<br>PLEASE do codehs til 70%

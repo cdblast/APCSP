@@ -8,13 +8,19 @@ from tkinter import filedialog
 from tkinter.filedialog import asksaveasfilename
 
 def do_command(command):
-    global command_textbox
+    global command_textbox, url_entry
+
+    # If url_entry is blank, use localhost IP address 
+    url_val = url_entry.get()
+    if (len(url_val) == 0):
+        # url_val = "127.0.0.1"
+        url_val = "::1"
     
     command_textbox.delete(1.0, tk.END)
     command_textbox.insert(tk.END, command + " working....\n")
     command_textbox.update()
 
-    p = subprocess.Popen(command + ' ::1', stdout=subprocess.PIPE, stderr=subprocess.PIPE) #v2
+    p = subprocess.Popen(command + ' ' + url_val, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
     cmd_results, cmd_errors = p.communicate()
     command_textbox.insert(tk.END, cmd_results)
@@ -30,15 +36,15 @@ ipconfig_btn.pack()
 
 #button for the "ping" command
 # Makes the command button pass it's name to a function using lambda
-ping_btn = tk.Button(frame, text="Check to see if a URL is up and active", command=lambda:do_command("ping www.pltw.org"))
+ping_btn = tk.Button(frame, text="Check to see if a URL is up and active", command=lambda:do_command("ping"))
 ping_btn.pack()
 
 #button for the "nslookup" command
-nslookup_btn = tk.Button(frame, text="Find a domain's IP and DNS, or vice versa", command=lambda:do_command("nslookup www.pltw.org"))
+nslookup_btn = tk.Button(frame, text="Find a domain's IP and DNS, or vice versa", command=lambda:do_command("nslookup"))
 nslookup_btn.pack()
 
 #button for the "tracert" command
-tracert_btn = tk.Button(frame, text="Check to see if a URL is up and active", command=lambda:do_command("tracert www.pltw.org"))
+tracert_btn = tk.Button(frame, text="Check to see if a URL is up and active", command=lambda:do_command("tracert"))
 tracert_btn.pack()
 
 # creates the frame with label for the text box
@@ -62,6 +68,7 @@ frame = tk.Frame(root,  bg="black") # change frame color
 frame.pack()
 
 # Adds an output box to GUI.
+#This is the "terminal".
 command_textbox = tksc.ScrolledText(frame, height=10, width=100)
 command_textbox.pack()
 

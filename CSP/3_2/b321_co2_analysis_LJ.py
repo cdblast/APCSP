@@ -3,6 +3,7 @@
 # Then it will use the matplotlib module to plot a graph and a bar chart
 import matplotlib.pyplot as plt
 import pandas as pd
+import math as math
 
 #THESE ARE THE COMMENTS FROM THE CO2_DATA CSV
 # The average CO2 is expressed as parts per million (ppm),,,,
@@ -15,18 +16,28 @@ import pandas as pd
 # Load in the data with read_csv()
 # TODO #1: change the file name to your data file name
 co2_data = pd.read_csv("co2_data.csv", header=0)   # identify the header row
+#reads the csv as-is
+print(co2_data)
+co2_data['Average'] = co2_data['Average'].replace(-99.99, math.nan)
+print(co2_data)
+co2_data.dropna(subset=['Average'], inplace=True)
+print(co2_data)
+#now the missing spots are replaced by averages
 
 # TODO #2: Use matplotlib to make a line graph
 plt.plot(co2_data['decimal_year'], co2_data['Average'], color='gray')
 plt.ylabel('Co2 levels in PPM')
 plt.xlabel('Years')
 plt.title('Change in Temperatures')
-
-# TODO #3: Plot LOWESS in a line graph
-plt.plot(co2_data['decimal_year'], co2_data['#Days'], color='blue')
 plt.show()
 
 '''
+#FROM A321
+
+# TODO #3: Plot LOWESS in a line graph
+plt.plot(co2_data['decimal_year'], co2_data['Month'], color='blue')
+plt.show()
+
 # TODO #4: Use matplotlib to make a bar chart
 plt.bar(co2_data['Year'], co2_data['Anomaly'], align='center', color='green')
 plt.ylabel('Temperature Anomalies in Celsius')

@@ -16,7 +16,7 @@ df = df.dropna(subset=['Value'])
 unique_states = df['State'].unique()
 all_honey = []
 all_states = []
-'''
+
 # without grouping
 for state in unique_states:
   honey_data = df[df['State'] == state]['Value']
@@ -31,5 +31,3 @@ for state in unique_states:
   print (state, honey_data.sum())
   all_honey.append(honey_data.sum())
   all_states.append(state)
-'''
-

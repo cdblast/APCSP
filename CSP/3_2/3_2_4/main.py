@@ -16,13 +16,8 @@ df = df.dropna(subset=['Value'])
 unique_states = df['State'].unique()
 all_honey = []
 all_states = []
+all_honey_without_grouping = []
 
-# without grouping
-for state in unique_states:
-  honey_data = df[df['State'] == state]['Value']
-  print (state, honey_data.sum())
-  all_honey.append(honey_data.sum())
-  all_states.append(state)
 
 # with grouping
 for state in unique_states:
